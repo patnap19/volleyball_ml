@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 # data = {
 #     'akcja': ['Atak', 'Przyjęcie', 'Błąd'],
@@ -25,3 +26,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 print(f"Liczba meczów do nauki: {len(X_train)}")
 print(f"Liczba meczów do testu: {len(X_test)}")
+
+model = LogisticRegression()
+
+model.fit(X_train, y_train)
+
+print("Model został wytrenowany")
+
+predictions = model.predict(X_test)
+
+print(f"Przewidziane wyniki: {predictions}")
+print(f"Rzeczywiste wyniki:  {y_test.values}")
